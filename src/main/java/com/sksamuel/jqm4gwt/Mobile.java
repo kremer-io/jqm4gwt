@@ -15,9 +15,15 @@ public class Mobile {
 	 * Invokes the $.mobile.changePage method
 	 */
 	private static native void changePage(String url, String t, boolean r, boolean ch) /*-{
-															$wnd.$.mobile.changePage(url, { transition: t, reverse: r, changeHash : ch } );
-															}-*/;
-
+		$wnd.$.mobile.changePage(url, { transition: t, reverse: r, changeHash : ch, allowSamePageTransition: true } );
+	}-*/;
+	
+	static native void activatePage(String id) /*-{
+		$wnd.$('div[data-url="' + id + '"]').animationComplete(function () {
+    		$wnd.$('div[data-url="' + id + '"]').addClass('ui-page-active');
+		});
+	}-*/;
+			
 	/**
 	 * Invokes the $.mobile.changePage method
 	 */

@@ -48,6 +48,7 @@ public class JQMContext {
 	 */
 	public static void changePage(JQMContainer container, Transition transition) {
 		Mobile.changePage("#" + container.getId(), transition, defaultTransistionDirection, defaultChangeHash);
+		Mobile.activatePage(container.getId());
 	}
 
 	private static void enhance(JQMContainer c) {
