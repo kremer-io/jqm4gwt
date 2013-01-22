@@ -258,8 +258,12 @@ public class JQMList extends JQMWidget implements HasClickHandlers, HasInset<JQM
     }
 
     protected native void refresh(String id) /*-{
-                                $wnd.$("#" + id).listview('refresh');
-								}-*/;
+    	if ( $wnd.$("#" + id).hasClass('ui-listview')) {
+    		$wnd.$("#" + id).listview('refresh');
+     	} else {
+    		$wnd.$("#" + id).trigger('create');
+     	}
+	}-*/;
 
     /**
      * Remove the divider with the given text. This method will search all the dividers and remove the first divider
